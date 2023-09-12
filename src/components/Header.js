@@ -3,7 +3,7 @@ import { cart, logoDark } from "../assets";
 
 const Header = () => {
   return (
-    <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-800 font-titleFont">
+    <div className="w-full h-20 bg-white  border-b-[1px] border-b-gray-800 font-titleFont">
       <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
         <div>
           <img
