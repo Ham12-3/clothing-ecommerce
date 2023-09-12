@@ -10,6 +10,7 @@ import {
   resetCart,
 } from "../redux/bazarSlice";
 import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 const CartItem = () => {
   const dispatch = useDispatch();
   const productData = useSelector((state) => state.bazar.productData);
@@ -95,6 +96,14 @@ const CartItem = () => {
       >
         Reset Cart
       </button>
+      <Link to="/">
+        <button className="mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300">
+          <span>
+            <HiOutlineArrowLeft />
+          </span>
+          go shopping
+        </button>
+      </Link>
       <ToastContainer
         position="top-left"
         autoClose={2000}
