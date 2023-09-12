@@ -1,7 +1,9 @@
 // import logo from './logo.svg';
 // import "./App.css";
+import { productsData } from "./api/Api";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import {
   createBrowserRouter,
@@ -27,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: productsData,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
@@ -35,9 +42,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="font-bodyFont">
-      <Header />
-      <Home />
-      <Footer />
+      <RouterProvider router={router} />
     </div>
   );
 }
