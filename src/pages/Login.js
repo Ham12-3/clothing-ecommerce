@@ -1,8 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { googleLogo } from "../assets";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 
 const Login = () => {
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  //   useEffect(() => {
+  //     const unsubscribe = auth.onAuthStateChanged((authUser) => {
+  //       console.log(authUser);
+  //       if (authUser) {
+  //         navigate("/");
+  //       }
+  //     });
+  //     return unsubscribe;
+  //   }, []);
+  const signIn = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        navigate("/");
+        var user = userCredential.user;
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  const handleGoogleLogin = (e) => {
+    e.preventDefault();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="w-full flex flex-col items-center justify-center gap-10 py-20">
       <div className="w-full max-w-xs">
@@ -10,15 +55,16 @@ const Login = () => {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
+              for="Email"
             >
-              Username
+              Email
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              type="text"
-              placeholder="Username"
+              id="Email"
+              type="email"
+              placeholder="Email"
+              onChange={(event) => setEmail(event.target.value)}
             />
           </div>
           <div className="mb-6">
@@ -33,14 +79,13 @@ const Login = () => {
               id="password"
               type="password"
               placeholder="******************"
+              onChange={(event) => setPassword(event.target.value)}
             />
-            <p className="text-red-500 text-xs italic">
-              Please choose a password.
-            </p>
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              onClick={signIn}
+              className="bg-gray-500 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
               Sign In
@@ -52,10 +97,16 @@ const Login = () => {
         </form>
       </div>
       <div className="w-full flex items-center justify-center gap-10">
-        <div className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-blue-600 cursor-pointer duration-300">
-          <img className="w-8" src={googleLogo} alt="" />
-          <span className="text-sm text-gray-900">Continue with Google</span>
-        </div>
+        <Link to="/">
+          <div
+            onClick={handleGoogleLogin}
+            className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-blue-600 cursor-pointer duration-300"
+          >
+            <img className="w-8" src={googleLogo} alt="" />
+            <span className="text-sm text-gray-900">Continue with Google</span>
+          </div>
+        </Link>
+
         <h3 className="inline-block align-baseline font-bold text-sm text-black-500 hover:text-black-800">
           No account?
         </h3>

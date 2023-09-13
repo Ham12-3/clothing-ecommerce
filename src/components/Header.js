@@ -2,8 +2,23 @@ import React from "react";
 import { cart, logoDark } from "../assets";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { signOut, getAuth } from "firebase/auth";
+import { useDispatch } from "react-redux";
 const Header = () => {
+  const dispatch = useDispatch();
+  const auth = getAuth();
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("Log Out Successfully");
+        // dispatch(removeUser());
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
   const productData = useSelector((state) => state.bazar.productData);
   console.log(productData);
   return (
@@ -49,15 +64,35 @@ const Header = () => {
               </span>
             </div>
           </Link>
+
+          <img
+            className="w-8 h-8 rounded-full"
+            src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_640.png"
+            alt="userLogo"
+          />
+
           <Link to="/login">
-            <img
-              className="w-8 h-8 rounded-full"
-              src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_640.png"
-              alt="userLogo"
-            />
+            <button
+              onClick={handleSignOut}
+              className="bg-gray-500 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded"
+            >
+              Sign Out
+            </button>
           </Link>
         </div>
       </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };
