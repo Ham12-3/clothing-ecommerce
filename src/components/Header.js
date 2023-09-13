@@ -49,11 +49,13 @@ const Header = () => {
               </span>
             </div>
           </Link>
-          <img
-            className="w-8 h-8 rounded-full"
-            src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_640.png"
-            alt="userLogo"
-          />
+          <Link to="/login">
+            <img
+              className="w-8 h-8 rounded-full"
+              src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_640.png"
+              alt="userLogo"
+            />
+          </Link>
         </div>
       </div>
     </div>
