@@ -4,6 +4,8 @@ import CartItem from "../components/CartItem";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
+import UsingHooks from "../UsingHooks";
+
 import { HiOutlineArrowLeft } from "react-icons/hi";
 const Cart = () => {
   const productData = useSelector((state) => state.bazar.productData);
@@ -61,12 +63,13 @@ const Cart = () => {
               <p className="font-titleFont font-semibold flex justify-between mt-6">
                 Total <span className="text-2xl font-bold">$ {totalAmt}</span>
               </p>
-              <button
+              {/* <button
                 disabled={userInfo}
                 className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
               >
                 Proceed to checkout
-              </button>
+              </button> */}
+              <UsingHooks />
             </div>
           </div>
           <ToastContainer

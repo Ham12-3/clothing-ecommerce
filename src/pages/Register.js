@@ -39,8 +39,8 @@ const Register = () => {
     }
   };
 
-  const handleGoogleLogin = (e) => {
-    e.preventDefault();
+  const handleGoogleLogin = () => {
+    // e.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -112,15 +112,13 @@ const Register = () => {
         </form>
       </div>
       <div className="w-full flex items-center justify-center gap-10">
-        <Link to="/">
-          <div
-            onClick={() => handleGoogleLogin()}
-            className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-blue-600 cursor-pointer duration-300"
-          >
-            <img className="w-8" src={googleLogo} alt="" />
-            <span className="text-sm text-gray-900"> Continue with Google</span>
-          </div>
-        </Link>
+        <div
+          onClick={() => handleGoogleLogin()}
+          className="text-base w-60 h-12 tracking-wide border-[1px] border-gray-400 rounded-md flex items-center justify-center gap-2 hover:border-blue-600 cursor-pointer duration-300"
+        >
+          <img className="w-8" src={googleLogo} alt="" />
+          <span className="text-sm text-gray-900"> Continue with Google</span>
+        </div>
 
         <h3 className="inline-block align-baseline font-bold text-sm text-black-500 hover:text-black-800">
           Have Account?
