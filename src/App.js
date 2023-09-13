@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Product from "./components/Product";
+import Register from "./pages/Register";
 import {
   createBrowserRouter,
   Outlet,
@@ -13,7 +14,6 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 
 const Layout = () => {
   return (
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        path: "/login",
+        element: <Login />,
+      },
+      {
         path: "/",
         element: <Home />,
         loader: productsData,
@@ -43,10 +47,7 @@ const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
+
       {
         path: "/register",
         element: <Register />,

@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+
 import { HiOutlineArrowLeft } from "react-icons/hi";
 const Cart = () => {
   const productData = useSelector((state) => state.bazar.productData);
+  const userInfo = useSelector((state) => state.bazar.userInfo);
   const [totalAmt, setTotalAmt] = useState("");
   useEffect(() => {
     let price = 0;
@@ -59,7 +61,10 @@ const Cart = () => {
               <p className="font-titleFont font-semibold flex justify-between mt-6">
                 Total <span className="text-2xl font-bold">$ {totalAmt}</span>
               </p>
-              <button className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300">
+              <button
+                disabled={userInfo}
+                className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
+              >
                 Proceed to checkout
               </button>
             </div>

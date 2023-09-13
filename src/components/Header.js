@@ -78,11 +78,11 @@ const Header = () => {
               onClick={handleSignOut}
               className="bg-gray-500 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded"
             >
-              Sign Out
+              {userInfo ? "Sign Out" : "Sign In"}
             </button>
           </Link>
           <p className="text-base font-titleFont font-semibold underline underline-offset">
-            {userInfo ? userInfo.email.substring(0, 10) : "User"}
+            {userInfo ? userInfo.email.substring(0, 10) : ""}
           </p>
         </div>
       </div>
