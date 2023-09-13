@@ -91,9 +91,9 @@ const Login = () => {
             >
               Sign In
             </button>
-            <button className="inline-block align-baseline font-bold text-sm text-black-500 hover:text-black-800">
+            {/* <button className="inline-block align-baseline font-bold text-sm text-black-500 hover:text-black-800">
               Forgot Password?
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
