@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { signOut, getAuth } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import { removeUser } from "../redux/bazarSlice";
 const Header = () => {
   const dispatch = useDispatch();
   const auth = getAuth();
@@ -13,13 +14,14 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         toast.success("Log Out Successfully");
-        // dispatch(removeUser());
+        dispatch(removeUser());
       })
       .catch((error) => {
         alert(error.message);
       });
   };
   const productData = useSelector((state) => state.bazar.productData);
+  const userInfo = useSelector((state) => state.bazar.userInfo);
   console.log(productData);
   return (
     <div className="w-full h-20 bg-white  border-b-[1px] border-b-gray-800 font-titleFont sticky top-0 z-50 ">
@@ -79,6 +81,9 @@ const Header = () => {
               Sign Out
             </button>
           </Link>
+          <p className="text-base font-titleFont font-semibold underline underline-offset">
+            {userInfo ? userInfo.email.substring(0, 10) : "User"}
+          </p>
         </div>
       </div>
       <ToastContainer
