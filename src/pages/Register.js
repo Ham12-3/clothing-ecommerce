@@ -10,12 +10,14 @@ import {
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/bazarSlice";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
+  const navigate = useNavigate();
 
   const register = async () => {
     if (email.length && password.length == 0) {
@@ -53,6 +55,7 @@ const Register = () => {
           })
         );
         console.log(user);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -92,7 +95,7 @@ const Register = () => {
               placeholder="******************"
             />
             <p className="text-red-500 text-xs italic">
-              Please choose a password.
+              Password should be at least 6 characters
             </p>
           </div>
           <div className="flex items-center justify-between">

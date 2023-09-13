@@ -42,6 +42,7 @@ const Login = () => {
         const token = credential.accessToken;
         const user = result.user;
         console.log(user);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
