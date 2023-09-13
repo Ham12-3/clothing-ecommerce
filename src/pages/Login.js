@@ -3,19 +3,22 @@ import { googleLogo } from "../assets";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { addUser } from "../redux/bazarSlice";
 import {
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-
+import { useDispatch } from "react-redux";
 const Login = () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
   //   useEffect(() => {
   //     const unsubscribe = auth.onAuthStateChanged((authUser) => {
   //       console.log(authUser);
@@ -41,6 +44,14 @@ const Login = () => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        dispatch(
+          addUser({
+            _id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          })
+        );
         console.log(user);
         navigate("/");
       })
