@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+![ecommerce-7](https://github.com/Ham12-3/clothing-ecommerce/assets/93613316/45517419-4ee8-4157-bb42-9da49bff208d)
+![ecommerce-6](https://github.com/Ham12-3/clothing-ecommerce/assets/93613316/62b1a377-bcf9-4025-98c1-d3b3358b6cd4)
+![ecommerce-5](https://github.com/Ham12-3/clothing-ecommerce/assets/93613316/45c5eef3-8ef3-430c-a2b5-edfd539af5b4)
+![ecommerce-4](https://github.com/Ham12-3/clothing-ecommerce/assets/93613316/12fa43ae-a130-485f-969c-1a268254e335)
+![ecommerce-3](https://github.com/Ham12-3/clothing-ecommerce/assets/93613316/34f4fc4d-3e6d-4da7-9c09-6ec965f8f0c2)
+![ecommerce-2](https://github.com/Ham12-3/clothing-ecommerce/assets/93613316/ab49e644-de35-4227-9f89-6aba6cd53f7f)
+![ecommerce-1](https://github.com/Ham12-3/clothing-ecommerce/assets/93613316/c707bcbb-23dc-4923-a70d-9df2d9580db5)
+
